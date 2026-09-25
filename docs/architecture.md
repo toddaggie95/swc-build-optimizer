@@ -11,7 +11,7 @@ catalog + input city / Designer URL
     -> strict canonical model
     -> deterministic validator
     -> candidate placement generator
-    -> CP-SAT city solver (future)
+    -> CP-SAT city solver
     -> city alternative / Pareto pool (future)
     -> planet evaluator and allocation search (future)
     -> economic reevaluation and local improvements (future)
@@ -28,30 +28,35 @@ their generated schemas are committed for other tools. Designer IDs are not API
 entity IDs. URL parsing rejects unknown catalog entries instead of inventing sizes.
 The state suffix is preserved as opaque metadata and is not a placement.
 
-OR-Tools is installed as a dependency and exercised by a real, deterministic
-one-worker CP-SAT solve. That test is deliberately not a city solver.
+OR-Tools runs both the dependency smoke test and the actual city solver. The smoke
+test remains separate from city search and cannot imply city optimality.
 
-## Next: city solver v0.2
+## Implemented: city solver v0.2
 
-Support validation, fixed-city addition optimization, and free-layout inventory
-search as separate modes. Fixed mode must preserve every original coordinate,
-orientation and facility; existing shields are immovable like other facilities.
-Free-layout mode may use historical placements as hints, never as extra constraints
-unless requested. Benchmark placement-indexed Boolean candidates against native
-optional rectangles/NoOverlap2D; consider redundant cumulative constraints and
-symmetry breaking based on measured results. Access constraints must match the
-deterministic validator, including damage to existing facilities.
+Validation, fixed-city addition optimization, and free-layout inventory search are
+separate modes. Fixed mode preserves every original coordinate, orientation and
+facility; once catalogued, shields receive the same treatment as other facilities.
+Free-layout mode uses original placements as optional hints and supports explicit
+locked IDs. The implementation uses optional rectangles/NoOverlap2D, reified pairwise
+direction/gap relationships for access, and symmetry breaking among interchangeable
+unlocked instances. All solutions are independently validated, including preservation
+of existing inventory and fixed placements. See [solver contract](solver.md).
 
-The first free-layout question is whether the exact historical inventory of
-29 facilities plus a 1×1 can fit. It remains unanswered. A time limit or failed
-search does not prove infeasibility. Keep feasibility explanation (assumption
-cores) separate from economic objective optimization.
+The first free-layout question is answered: the exact historical inventory of
+29 facilities plus a 1×1 fits. The saved witness passes the validator. A 30-second
+single-worker search returned UNKNOWN; an eight-worker run found a solution in
+about 34 seconds within a 120-second budget. This is an existence result, not a
+proof of the greatest possible count. See [benchmarks](../benchmarks/README.md).
 
-Future result contracts must include status, objective, bound, gap (when defined),
-time limit, elapsed time, solver version/parameters, rule/catalog versions,
-assumption IDs and independent validation. Distinguish VALID_ONLY, FEASIBLE or
-BEST_FOUND, PROVEN_OPTIMAL, PROVEN_INFEASIBLE, UNKNOWN and MODEL_INVALID. Report
-proofs only under the encoded rules and searched problem scope.
+Result contracts include status, objective/bound/gap when applicable, time limit,
+build/search/total time, solver version/settings, rule version, catalog/request
+fingerprints, assumption IDs and independent validation. Feasibility search does
+not claim optimality even when CP-SAT uses its OPTIMAL satisfaction status.
+
+Further solver research: compare a placement-indexed formulation, benchmark
+redundant cumulative constraints, add economic values only through an explicit
+objective contract, and implement dedicated infeasibility explanations. No
+performance claim between unimplemented formulations is made.
 
 ## Later: planet feedback loop
 

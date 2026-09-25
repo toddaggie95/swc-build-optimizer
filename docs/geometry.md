@@ -46,7 +46,9 @@ addition alternatives, not a jointly feasible set and not economic recommendatio
 cells, validate under this contract, and return exactly zero 1×1 additions.
 The HR50 at `(8,0,v)` already occupies the former mine reservation. Do not create
 an additional vacant 5×5 reserve. Zero single-square additions proves saturation
-of that **fixed geometry** under this model; no free-layout solver has run.
+of that **fixed geometry** under this model. Version 0.2 additionally stores a
+validated 30-facility rearrangement in `hr50_plus_one_repacked.city.json`, proving
+that fixed-layout saturation did not imply global saturation of that inventory.
 
 The validator explicitly leaves power, terrain, special restrictions, facility
 exceptions, construction order, ownership and planet economics to future layers.

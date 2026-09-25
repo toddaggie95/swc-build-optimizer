@@ -1,10 +1,10 @@
 # SWC Build Optimizer
 
 Optimization tools for Star Wars Combine city layouts and eventual planet-wide
-facility planning. This initial release provides **deterministic geometry**, a
-curated catalog, versioned schemas, City Designer URL import/export, and an
-OR-Tools CP-SAT dependency smoke test. It does not yet optimize cities or score
-planet economics.
+facility planning. Version 0.2 provides **deterministic geometry and a real CP-SAT
+city solver**, a curated catalog, versioned schemas, and City Designer URL
+import/export. It supports fixed-city additions and free-layout rearrangement.
+Planet economics is not implemented.
 
 ## Run it
 
@@ -21,13 +21,15 @@ python -m pytest -q
 swc-build validate tests/fixtures/mine_low_er_4_garage_hr50.city.json
 swc-build additions tests/fixtures/mine_low_er_4_garage_hr50.city.json --facility-id 1
 swc-build solver-smoke
+swc-build solve examples/fixed-additions.request.json --output result.json
 ```
 
 If PowerShell activation is unavailable, call `.venv\Scripts\python.exe` and
 `.venv\Scripts\swc-build.exe` directly. No game login or API credentials are needed.
 The historical fixture should report `geometry_valid: true`, zero additions, and
 the separate solver smoke test should report `OPTIMAL` with objective/bound 2.
-That `OPTIMAL` applies only to a tiny dependency check, never to the historical city.
+That smoke-test `OPTIMAL` applies only to a tiny dependency check.
+The example `solve` command optimizes additions on a small demonstration grid.
 
 ## Implemented rules and limits
 
@@ -42,7 +44,31 @@ That `OPTIMAL` applies only to a tiny dependency check, never to the historical 
 
 The **Mine Low ER - 4 Garage + HR50** fixture preserves the exact user-supplied URL,
 29 placements, orientation, inventory and Designer state. Its fixed layout is
-saturated under these rules. Global repacking optimality is **unknown**.
+saturated under these rules. The new solver found a rearrangement of those same
+29 facilities **plus one 1×1**, independently validated with 324 occupied cells.
+This proves a 30-facility layout exists; the global maximum is still unknown.
+See the [benchmark evidence and Designer URL](benchmarks/README.md).
+
+## City solver
+
+Pass a `SolveRequest` JSON document to `swc-build solve`. In `fixed` mode all original
+placements are preserved, regardless of their `fixed` field. In `free` mode they
+are movable unless named in `locked_ids`; their coordinates are optional search
+hints. Every original facility remains mandatory. Additions specify facility ID
+and minimum/maximum count. `feasibility` asks whether the requested inventory fits;
+`max_additions` maximizes the number added within those limits, with no economic
+interpretation. Every returned city passes the separate validator.
+
+```sh
+python scripts/benchmark_historical.py --mode fixed --output-dir work/hr50-fixed
+python scripts/benchmark_historical.py --mode free --seconds 120 --workers 8 --output-dir work/hr50-free
+```
+
+Use a new output directory per benchmark run. Search defaults to one worker and a
+fixed seed; multiworker searches may produce different layouts/timings. Results
+distinguish `FEASIBLE`, `PROVEN_OPTIMAL`, `PROVEN_INFEASIBLE`, `UNKNOWN` and
+`MODEL_INVALID`, and include scope, timings, bounds where applicable and provenance.
+See the [solver contract](docs/solver.md) for limitations and CLI exit codes.
 
 ## Project map
 
@@ -54,6 +80,8 @@ saturated under these rules. Global repacking optimality is **unknown**.
 | `data/assumptions.json` | Evidence and uncertainty register; no speculative economic defaults |
 | `data/scenarios/` | Planet input scaffold, without an economic implementation |
 | `tests/fixtures/` | Historical layout and independent expected regression facts |
+| `examples/` | Runnable solver request and sample result |
+| `benchmarks/` | Historical fixed/free requests, results and witness layout |
 | `docs/` | Rules, provenance, architecture and next milestones |
 
 Read [geometry rules](docs/geometry.md), [architecture and roadmap](docs/architecture.md),

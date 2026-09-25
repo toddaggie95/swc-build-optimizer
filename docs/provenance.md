@@ -32,8 +32,10 @@ External implementation references checked during initialization (2026-09-25):
 - [OR-Tools Python installation](https://developers.google.com/optimization/install/python)
   documents the supported pip installation route.
 - [OR-Tools CP-SAT](https://developers.google.com/optimization/cp/cp_solver)
-  is the planned city constraint-solver backend. The seed only smoke-tests it.
+  is the city constraint-solver backend as of version 0.2.
 
 The regression tests independently reproduce the corrected result from the saved
 coordinates. They do not prove equivalence to all SWC build mechanics or optimality
-across alternate arrangements.
+across alternate arrangements. Version 0.2 adds a separately validated alternate
+arrangement fitting the original inventory plus a Personal Residence (1×1);
+the complete run evidence is preserved under `benchmarks/`.

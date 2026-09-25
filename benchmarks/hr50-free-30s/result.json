@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "status": "UNKNOWN",
+  "cp_sat_status": "UNKNOWN",
+  "mode": "free",
+  "goal": "feasibility",
+  "scope": "geometry_only",
+  "city": null,
+  "geometry_valid": null,
+  "additions_placed": null,
+  "objective_value": null,
+  "best_bound": null,
+  "relative_gap": null,
+  "build_seconds": 0.07603070000186563,
+  "solve_seconds": 30.0120449999813,
+  "total_seconds": 30.08826569991652,
+  "time_limit_seconds": 30.0,
+  "workers": 1,
+  "random_seed": 0,
+  "use_hints": true,
+  "symmetry_breaking": true,
+  "solver_version": "9.15.6755",
+  "rules_version": "geometry-v1",
+  "catalog_sha256": "3a5462537b7c59754f11fe3b6f3fc0a486c3d37c9c9fe70b44c728b31542b91f",
+  "request_sha256": "b7b74b3c4c81b13978da19948d9212aa045566a0e08c5d7eeb0322d48926bdf5",
+  "assumption_ids": [
+    "border-is-not-road",
+    "placement-grid"
+  ],
+  "unchecked": [
+    "power",
+    "terrain",
+    "special_restrictions",
+    "economics"
+  ],
+  "model_stats": "satisfaction model '': (model_fingerprint: 0x834603f368af4c68)\n#Variables: 3'780 (3'679 primary variables)\n  - 3'660 Booleans in [0,1]\n  - 60 in [0,19]\n  - 2 in [0,21]\n  - 48 in [0,23]\n  - 2 in [0,25]\n  - 8 in [0,27]\n#kBoolOr: 3'480 (#enforced: 3'480 #multi: 3'480) (#literals: 13'920)\n#kInterval: 60 (#enforced: 60)\n#kLinear1: 221 (#enforced: 180)\n#kLinear2: 7'122 (#enforced: 6'960)\n#kLinear3: 38\n#kLinearN: 50 (#enforced: 20 #multi: 20) (#terms: 230)\n#kNoOverlap2D: 1 (#rectangles: 30, #optional: 30, #quadratic_areas: 19)",
+  "message": "Search ended without a solution or infeasibility proof."
+}

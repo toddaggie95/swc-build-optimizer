@@ -1,3 +1,4 @@
+import hashlib
 import json
 from pathlib import Path
 
@@ -7,6 +8,7 @@ from pydantic import ValidationError
 
 from swc_build_optimizer.designer import parse_url, to_url
 from swc_build_optimizer.models import AssumptionSet, Catalog, City, Placement, PlanetScenario
+from swc_build_optimizer.solve_models import SolveRequest, SolveResult
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -18,6 +20,8 @@ ROOT = Path(__file__).resolve().parents[1]
         ("city", City, "tests/fixtures/mine_low_er_4_garage_hr50.city.json"),
         ("assumptions", AssumptionSet, "data/assumptions.json"),
         ("planet", PlanetScenario, "data/scenarios/empty_planet.json"),
+        ("solve-request", SolveRequest, "examples/fixed-additions.request.json"),
+        ("solve-result", SolveResult, "examples/fixed-additions.result.json"),
     ],
 )
 def test_schemas_match_models_and_examples(name, model, example):
@@ -79,3 +83,23 @@ def test_economics_are_not_enabled_by_default():
         for a in assumptions.assumptions
         if a.domain == "economics"
     )
+
+
+@pytest.mark.parametrize("run", ["hr50-fixed", "hr50-free-30s", "hr50-free-120s-8workers"])
+def test_saved_benchmark_evidence_is_consistent(run, catalog):
+    from swc_build_optimizer.designer import parse_url
+    from swc_build_optimizer.validation import validate
+
+    directory = ROOT / "benchmarks" / run
+    request = SolveRequest.model_validate_json((directory / "request.json").read_text())
+    result = SolveResult.model_validate_json((directory / "result.json").read_text())
+    assert result.request_sha256 == hashlib.sha256(request.model_dump_json().encode()).hexdigest()
+    assert result.catalog_sha256 == hashlib.sha256(catalog.model_dump_json().encode()).hexdigest()
+    if result.city:
+        saved = City.model_validate_json((directory / "city.json").read_text())
+        assert saved == result.city
+        assert validate(saved, catalog).geometry_valid
+        imported = parse_url((directory / "designer-url.txt").read_text().strip(), catalog)
+        assert [(p.facility_id, p.x, p.y, p.orientation) for p in imported.placements] == [
+            (p.facility_id, p.x, p.y, p.orientation) for p in saved.placements
+        ]

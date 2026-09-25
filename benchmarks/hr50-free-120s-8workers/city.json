@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "name": "Mine Low ER - 4 Garage + HR50",
+  "width": 20,
+  "height": 20,
+  "placements": [
+    {
+      "id": "p01",
+      "facility_id": 82,
+      "x": 9,
+      "y": 10,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p02",
+      "facility_id": 82,
+      "x": 9,
+      "y": 13,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p03",
+      "facility_id": 3,
+      "x": 1,
+      "y": 0,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p04",
+      "facility_id": 3,
+      "x": 3,
+      "y": 1,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p05",
+      "facility_id": 3,
+      "x": 1,
+      "y": 18,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p06",
+      "facility_id": 3,
+      "x": 6,
+      "y": 19,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p07",
+      "facility_id": 20,
+      "x": 5,
+      "y": 0,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p08",
+      "facility_id": 20,
+      "x": 8,
+      "y": 0,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p09",
+      "facility_id": 20,
+      "x": 12,
+      "y": 0,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p10",
+      "facility_id": 82,
+      "x": 9,
+      "y": 16,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p11",
+      "facility_id": 7,
+      "x": 5,
+      "y": 2,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p12",
+      "facility_id": 4,
+      "x": 5,
+      "y": 18,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p13",
+      "facility_id": 4,
+      "x": 2,
+      "y": 19,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p14",
+      "facility_id": 82,
+      "x": 13,
+      "y": 16,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p15",
+      "facility_id": 82,
+      "x": 17,
+      "y": 16,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p16",
+      "facility_id": 2,
+      "x": 1,
+      "y": 1,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p17",
+      "facility_id": 7,
+      "x": 13,
+      "y": 9,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p18",
+      "facility_id": 49,
+      "x": 1,
+      "y": 11,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p19",
+      "facility_id": 2,
+      "x": 16,
+      "y": 0,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p20",
+      "facility_id": 70,
+      "x": 10,
+      "y": 19,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p21",
+      "facility_id": 4,
+      "x": 0,
+      "y": 11,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p22",
+      "facility_id": 4,
+      "x": 9,
+      "y": 9,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p23",
+      "facility_id": 44,
+      "x": 0,
+      "y": 5,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p24",
+      "facility_id": 49,
+      "x": 13,
+      "y": 1,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p25",
+      "facility_id": 2,
+      "x": 5,
+      "y": 9,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p26",
+      "facility_id": 2,
+      "x": 0,
+      "y": 15,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p27",
+      "facility_id": 70,
+      "x": 14,
+      "y": 19,
+      "orientation": "h",
+      "fixed": true
+    },
+    {
+      "id": "p28",
+      "facility_id": 70,
+      "x": 4,
+      "y": 1,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "p29",
+      "facility_id": 70,
+      "x": 0,
+      "y": 1,
+      "orientation": "v",
+      "fixed": true
+    },
+    {
+      "id": "add-1-1",
+      "facility_id": 1,
+      "x": 0,
+      "y": 19,
+      "orientation": "v",
+      "fixed": false
+    }
+  ],
+  "designer_state": "|4|v",
+  "source_url": null
+}
