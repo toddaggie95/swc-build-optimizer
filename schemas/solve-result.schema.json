@@ -1,0 +1,329 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "City": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "width": {
+          "default": 20,
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "default": 20,
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "placements": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Placement"
+          },
+          "title": "Placements",
+          "type": "array"
+        },
+        "designer_state": {
+          "default": "",
+          "pattern": "^(\\|[^|]*\\|[^|]*)?$",
+          "title": "Designer State",
+          "type": "string"
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Url"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "City",
+      "type": "object"
+    },
+    "Placement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "facility_id": {
+          "minimum": 1,
+          "title": "Facility Id",
+          "type": "integer"
+        },
+        "x": {
+          "title": "X",
+          "type": "integer"
+        },
+        "y": {
+          "title": "Y",
+          "type": "integer"
+        },
+        "orientation": {
+          "default": "v",
+          "enum": [
+            "v",
+            "h"
+          ],
+          "title": "Orientation",
+          "type": "string"
+        },
+        "fixed": {
+          "default": true,
+          "title": "Fixed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "facility_id",
+        "x",
+        "y"
+      ],
+      "title": "Placement",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "status": {
+      "enum": [
+        "FEASIBLE",
+        "PROVEN_OPTIMAL",
+        "PROVEN_INFEASIBLE",
+        "UNKNOWN",
+        "MODEL_INVALID"
+      ],
+      "title": "Status",
+      "type": "string"
+    },
+    "cp_sat_status": {
+      "title": "Cp Sat Status",
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "fixed",
+        "free"
+      ],
+      "title": "Mode",
+      "type": "string"
+    },
+    "goal": {
+      "enum": [
+        "feasibility",
+        "max_additions"
+      ],
+      "title": "Goal",
+      "type": "string"
+    },
+    "scope": {
+      "const": "geometry_only",
+      "default": "geometry_only",
+      "title": "Scope",
+      "type": "string"
+    },
+    "city": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/City"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "geometry_valid": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Geometry Valid"
+    },
+    "additions_placed": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Additions Placed"
+    },
+    "objective_value": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Objective Value"
+    },
+    "best_bound": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Best Bound"
+    },
+    "relative_gap": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Relative Gap"
+    },
+    "build_seconds": {
+      "title": "Build Seconds",
+      "type": "number"
+    },
+    "solve_seconds": {
+      "title": "Solve Seconds",
+      "type": "number"
+    },
+    "total_seconds": {
+      "title": "Total Seconds",
+      "type": "number"
+    },
+    "time_limit_seconds": {
+      "title": "Time Limit Seconds",
+      "type": "number"
+    },
+    "workers": {
+      "title": "Workers",
+      "type": "integer"
+    },
+    "random_seed": {
+      "title": "Random Seed",
+      "type": "integer"
+    },
+    "use_hints": {
+      "title": "Use Hints",
+      "type": "boolean"
+    },
+    "symmetry_breaking": {
+      "title": "Symmetry Breaking",
+      "type": "boolean"
+    },
+    "solver_version": {
+      "title": "Solver Version",
+      "type": "string"
+    },
+    "rules_version": {
+      "const": "geometry-v1",
+      "default": "geometry-v1",
+      "title": "Rules Version",
+      "type": "string"
+    },
+    "catalog_sha256": {
+      "title": "Catalog Sha256",
+      "type": "string"
+    },
+    "request_sha256": {
+      "title": "Request Sha256",
+      "type": "string"
+    },
+    "assumption_ids": {
+      "default": [
+        "border-is-not-road",
+        "placement-grid"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Assumption Ids",
+      "type": "array"
+    },
+    "unchecked": {
+      "default": [
+        "power",
+        "terrain",
+        "special_restrictions",
+        "economics"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "title": "Unchecked",
+      "type": "array"
+    },
+    "model_stats": {
+      "title": "Model Stats",
+      "type": "string"
+    },
+    "message": {
+      "title": "Message",
+      "type": "string"
+    }
+  },
+  "required": [
+    "status",
+    "cp_sat_status",
+    "mode",
+    "goal",
+    "build_seconds",
+    "solve_seconds",
+    "total_seconds",
+    "time_limit_seconds",
+    "workers",
+    "random_seed",
+    "use_hints",
+    "symmetry_breaking",
+    "solver_version",
+    "catalog_sha256",
+    "request_sha256",
+    "model_stats",
+    "message"
+  ],
+  "title": "SolveResult",
+  "type": "object"
+}

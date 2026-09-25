@@ -4,8 +4,10 @@ import json
 from pathlib import Path
 
 from swc_build_optimizer.models import AssumptionSet, Catalog, City, PlanetScenario
+from swc_build_optimizer.solve_models import SolveRequest, SolveResult
 
 MODELS = {"catalog": Catalog, "city": City, "assumptions": AssumptionSet, "planet": PlanetScenario}
+MODELS.update({"solve-request": SolveRequest, "solve-result": SolveResult})
 
 
 def schema_for(model):

@@ -18,8 +18,28 @@ def main() -> int:
         if name == "additions":
             command.add_argument("--facility-id", type=int, required=True)
     sub.add_parser("solver-smoke")
+    solve = sub.add_parser("solve", help="Solve a versioned city-search request")
+    solve.add_argument("request", type=Path)
+    solve.add_argument("--output", type=Path, help="Write the complete JSON result")
     args = parser.parse_args()
     try:
+        if args.command == "solve":
+            from .solve_models import SolveRequest
+            from .solver import solve_city
+
+            request = SolveRequest.model_validate_json(args.request.read_text(encoding="utf-8"))
+            result = solve_city(request, load_catalog())
+            payload = result.model_dump_json(indent=2)
+            if args.output:
+                args.output.write_text(payload + "\n", encoding="utf-8")
+            print(payload)
+            return {
+                "FEASIBLE": 0,
+                "PROVEN_OPTIMAL": 0,
+                "PROVEN_INFEASIBLE": 1,
+                "UNKNOWN": 3,
+                "MODEL_INVALID": 2,
+            }[result.status]
         if args.command == "solver-smoke":
             from .solver import smoke_check
 

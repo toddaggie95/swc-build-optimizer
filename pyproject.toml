@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "swc-build-optimizer"
-version = "0.1.0"
+version = "0.2.0"
 description = "Deterministic SWC city geometry and optimization foundations"
 requires-python = ">=3.11"
 dependencies = ["pydantic>=2.11,<3", "ortools>=9.14,<10"]
