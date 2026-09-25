@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "assumptions": [
+    {
+      "id": "border-is-not-road",
+      "domain": "geometry",
+      "statement": "Only fully empty in-bounds adjacent side strips count; require at least two for every facility.",
+      "evidence": {
+        "status": "user_confirmed",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": true,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "placement-grid",
+      "domain": "geometry",
+      "statement": "Designer placement grid is 20x20, coordinates 0..19; this is not planetary city-area accounting.",
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": true,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "planet-city-area",
+      "domain": "economics",
+      "statement": "The planning discussion used 22x22=484 for planet accounting. Verify separately before enabling any formula.",
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": false,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "fim",
+      "domain": "economics",
+      "statement": "FIM and secret income mechanics require versioned empirical calibration, uncertainty and source provenance. No default formula.",
+      "evidence": {
+        "status": "unknown",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": false,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "mnsf-rnf-sbr",
+      "domain": "economics",
+      "statement": "Saturation and sustainable counts must be evaluated at planet scope; no universal thresholds are encoded.",
+      "evidence": {
+        "status": "unknown",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": false,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "er-crime-pim",
+      "domain": "economics",
+      "statement": "ER, crime, PIM and employment/flats effects need sourced formulas and scenario targets.",
+      "evidence": {
+        "status": "unknown",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": false,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "power",
+      "domain": "power",
+      "statement": "Power generation and consumption are not populated or validated in this seed.",
+      "evidence": {
+        "status": "unknown",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": false,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "terrain-special",
+      "domain": "terrain",
+      "statement": "Terrain eligibility, mine limits and special facility exemptions need explicit rules before full build validation.",
+      "evidence": {
+        "status": "unknown",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": false,
+      "value": null,
+      "units": null
+    },
+    {
+      "id": "existing-shields",
+      "domain": "policy",
+      "statement": "Existing TFF planets are described as already shielded. Preserve existing shields; do not impose a shield in every city.",
+      "evidence": {
+        "status": "user_confirmed",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Project planning direction; not independent verification of current game mechanics."
+      },
+      "enabled": false,
+      "value": null,
+      "units": null
+    }
+  ]
+}

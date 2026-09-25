@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Evidence": {
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "enum": [
+            "user_confirmed",
+            "documented",
+            "empirical",
+            "assumption",
+            "unknown"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "source": {
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "note": {
+          "minLength": 1,
+          "title": "Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "source",
+        "note"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "FacilityType": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "City Designer ID; not an SWC API entity ID",
+          "minimum": 1,
+          "title": "Id",
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "width": {
+          "description": "Width in vertical (v) orientation",
+          "minimum": 1,
+          "title": "Width",
+          "type": "integer"
+        },
+        "height": {
+          "description": "Height in vertical (v) orientation",
+          "minimum": 1,
+          "title": "Height",
+          "type": "integer"
+        },
+        "evidence": {
+          "$ref": "#/$defs/Evidence"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "width",
+        "height",
+        "evidence"
+      ],
+      "title": "FacilityType",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "facilities": {
+      "items": {
+        "$ref": "#/$defs/FacilityType"
+      },
+      "title": "Facilities",
+      "type": "array"
+    }
+  },
+  "required": [
+    "facilities"
+  ],
+  "title": "Catalog",
+  "type": "object"
+}

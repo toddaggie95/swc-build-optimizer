@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Placement": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "facility_id": {
+          "minimum": 1,
+          "title": "Facility Id",
+          "type": "integer"
+        },
+        "x": {
+          "title": "X",
+          "type": "integer"
+        },
+        "y": {
+          "title": "Y",
+          "type": "integer"
+        },
+        "orientation": {
+          "default": "v",
+          "enum": [
+            "v",
+            "h"
+          ],
+          "title": "Orientation",
+          "type": "string"
+        },
+        "fixed": {
+          "default": true,
+          "title": "Fixed",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "facility_id",
+        "x",
+        "y"
+      ],
+      "title": "Placement",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": 1,
+      "default": 1,
+      "title": "Schema Version",
+      "type": "integer"
+    },
+    "name": {
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "width": {
+      "default": 20,
+      "minimum": 1,
+      "title": "Width",
+      "type": "integer"
+    },
+    "height": {
+      "default": 20,
+      "minimum": 1,
+      "title": "Height",
+      "type": "integer"
+    },
+    "placements": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Placement"
+      },
+      "title": "Placements",
+      "type": "array"
+    },
+    "designer_state": {
+      "default": "",
+      "pattern": "^(\\|[^|]*\\|[^|]*)?$",
+      "title": "Designer State",
+      "type": "string"
+    },
+    "source_url": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Source Url"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "title": "City",
+  "type": "object"
+}

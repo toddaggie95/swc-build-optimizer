@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "facilities": [
+    {
+      "id": 1,
+      "name": "Personal Residence",
+      "width": 1,
+      "height": 1,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 2,
+      "name": "Office",
+      "width": 1,
+      "height": 3,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 3,
+      "name": "Hotel",
+      "width": 1,
+      "height": 3,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 4,
+      "name": "Tavern",
+      "width": 1,
+      "height": 3,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 7,
+      "name": "Palace",
+      "width": 7,
+      "height": 7,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 20,
+      "name": "Power Generator",
+      "width": 1,
+      "height": 3,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 44,
+      "name": "High Rise 50",
+      "width": 5,
+      "height": 5,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 49,
+      "name": "Skyscraper 100",
+      "width": 7,
+      "height": 7,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 70,
+      "name": "Garage",
+      "width": 1,
+      "height": 3,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    },
+    {
+      "id": 82,
+      "name": "Council Flats",
+      "width": 3,
+      "height": 3,
+      "evidence": {
+        "status": "assumption",
+        "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+        "note": "Historical Designer mapping and dimensions reconstructed from the planning conversation; curated subset, not a current complete SWC catalog."
+      }
+    }
+  ]
+}
