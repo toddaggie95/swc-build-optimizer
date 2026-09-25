@@ -1,0 +1,23 @@
+{
+  "source": "chatgpt-conversation://6ab2d99f-e97c-83ea-868f-a8f0c2798c11",
+  "source_user_turn": "0b050e99-8d65-47f7-8207-23326b009bfb",
+  "correction_user_turn": "a0edb3c9-523e-4d21-b086-032634811eeb",
+  "facility_count": 29,
+  "occupied_cells": 323,
+  "geometry_valid": true,
+  "inventory": {
+    "82": 5,
+    "20": 3,
+    "3": 4,
+    "2": 4,
+    "4": 4,
+    "70": 4,
+    "7": 2,
+    "49": 2,
+    "44": 1
+  },
+  "probe_facility_id": 1,
+  "legal_single_additions": 0,
+  "global_repacking_status": "not_tested",
+  "note": "HR50 occupies the former mine reserve. No extra empty 5x5 reservation. Fixed-layout saturation is not global optimality."
+}
